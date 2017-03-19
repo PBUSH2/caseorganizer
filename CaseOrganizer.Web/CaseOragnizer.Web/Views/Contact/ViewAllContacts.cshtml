@@ -1,0 +1,31 @@
+﻿@using CaseOrganizer.Web.Models
+@model List<Contact>
+
+@{
+    ViewBag.Title = "ViewAllContacts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View All Contacts</h2>
+
+<table>
+    <tr>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Phone</td>
+        <td>Email</td>
+        <td>Address</td>
+    </tr>
+    @foreach(Contact c in Model)
+    {
+    <tr>
+        <td>@c.FirstName</td> 
+        <td>@c.LastName</td>
+        <td>@c.Phone</td>
+        <td>@c.Email</td>
+        <td>@c.Address</td>
+    
+    </tr>
+
+    }
+</table>

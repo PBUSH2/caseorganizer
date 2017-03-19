@@ -1,0 +1,20 @@
+﻿@using CaseOrganizer.Web.Models
+@model List<Contact>
+@{
+    ViewBag.Title = "ViewContactByLastName";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ViewContactByLastName</h2>
+
+<table>
+    @foreach (Contact c in Model)
+    {
+        <tr>
+            <td>@c.FirstName </td>
+            <td>@c.LastName</td>
+            <td>@c.Email</td>
+            <td>@c.Address</td>
+        </tr>
+    }
+</table>

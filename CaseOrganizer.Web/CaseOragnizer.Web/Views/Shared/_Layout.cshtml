@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Case Organizer - @ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/stylesheet.css" />
+</head>
+<body>
+    <header>
+        <a href="@Url.Action("Index", "Home")"><img style="width:30%;" src="~/Content/img/logo.png" alt="National Park Weather Service" /></a>
+
+    </header>
+    <nav>
+        <ul>
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+
+            <li>@Html.ActionLink("Survey", "Index", "Survey")</li>
+        </ul>
+    </nav>
+
+    <section id="main">
+
+        @RenderBody()
+
+    </section>
+    <footer>
+        CaseOrganizer |  
+    </footer>
+</body>
+</html>

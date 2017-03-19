@@ -1,0 +1,17 @@
+﻿@using CaseOrganizer.Web.Models
+@model Contact
+
+@{
+    ViewBag.Title = "ViewContactByEmail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search Contacts by Last Name</h2>
+
+@using (Html.BeginForm("SearchContactByLastName", "Contact", FormMethod.Post))
+{
+@Html.Label("LastName", "Please Enter Last Name:")
+@Html.TextBoxFor(m=> m.LastName)
+
+    <button>Submit</button>
+}
