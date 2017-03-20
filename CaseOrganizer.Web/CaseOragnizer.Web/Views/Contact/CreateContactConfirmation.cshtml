@@ -1,0 +1,17 @@
+﻿@using CaseOrganizer.Web.Models;
+@model Boolean
+@{
+    ViewBag.Title = "CreateContactConfirmation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateContactConfirmation</h2>
+
+@if(Model == true)
+{
+    <h2>Contact Successfully Created!</h2>
+}
+else
+{
+    <h2>Contact *Not* Created!</h2>
+}

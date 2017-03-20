@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CaseOrganizer.Web.DAL
 {
-    class ContactSqlDAL: IContactDAL
+    class ContactSqlDAL : IContactDAL
 
     {
         public string connectionString;
@@ -93,12 +93,24 @@ namespace CaseOrganizer.Web.DAL
                         ContactId = Convert.ToInt32(reader["contact_id"]),
                         FirstName = Convert.ToString(reader["first_name"]),
                         LastName = Convert.ToString(reader["last_name"]),
-                        Address = Convert.ToString(reader["address"]),
-                        BirthDate = Convert.ToDateTime(reader["birth_date"]),
-                        //CaseId = Convert.ToInt32(reader["case_id"]),
-                        Email = Convert.ToString(reader["email"]),
-                        Phone = Convert.ToString(reader["phone"])
                     };
+                    if (!reader.IsDBNull(5))
+                    {
+                        c.Address = Convert.ToString(reader["address"]);
+                    }
+                    if (!reader.IsDBNull(6))
+                    {
+                        c.BirthDate = Convert.ToDateTime(reader["birth_date"]);
+                    }
+                    //CaseId = Convert.ToInt32(reader["case_id"]),
+                    if (!reader.IsDBNull(7))
+                    {
+                        c.Email = Convert.ToString(reader["email"]);
+                    }
+                    //if(!reader.IsDBNull(8))
+                    //{
+                    c.Phone = Convert.ToString(reader["phone"]);
+                    //}
                     contactList.Add(c);
 
                 }
@@ -123,10 +135,22 @@ namespace CaseOrganizer.Web.DAL
                     SqlCommand cmd = new SqlCommand(SQL_CreateContact, conn);
                     cmd.Parameters.AddWithValue("@firstname", newContact.FirstName);
                     cmd.Parameters.AddWithValue("@lastname", newContact.LastName);
-                    cmd.Parameters.AddWithValue("@phone", newContact.Phone);
-                    cmd.Parameters.AddWithValue("@email", newContact.Email);
-                    cmd.Parameters.AddWithValue("@address", newContact.Address);
+                    if (newContact.Phone != null)
+                    {
+                        cmd.Parameters.AddWithValue("@phone", newContact.Phone);
+                    }
+                    if (newContact.Email != null)
+                    {
+                        cmd.Parameters.AddWithValue("@email", newContact.Email);
+                    }
+                    if (newContact.Address != null)
+                    {
+                        cmd.Parameters.AddWithValue("@address", newContact.Address);
+                    }
+                    if(newContact.BirthDate != null)
+                    { 
                     cmd.Parameters.AddWithValue("@birthdate", newContact.BirthDate);
+                    }
                     int linesChanged = (int)cmd.ExecuteScalar();
                     return (linesChanged > 0);
 

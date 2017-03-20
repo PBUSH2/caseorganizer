@@ -1,0 +1,38 @@
+﻿@using CaseOrganizer.Web.Models
+@model Contact
+@{
+    ViewBag.Title = "CreateContact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateContact</h2>
+
+@Html.BeginForm("CreateContact", "Contact", FormMethod.Post)
+<div>
+    @Html.Label("FirstName", "First Name")
+    @Html.TextBoxFor(m=> m.FirstName)
+</div>
+<div>
+    @Html.Label("LastName", "Last Name")
+    @Html.TextBoxFor(m=>m.LastName)
+</div>
+<div>
+    @Html.Label("Phone", "Phone Number")
+    @Html.TextBoxFor(m=>m.Phone)
+</div>
+<div>
+    @Html.Label("Email", "Email")
+    @Html.TextBoxFor(m=>m.Email)
+</div>
+<div>
+    @Html.Label("Address", "Address")
+    @Html.TextBoxFor(m=>m.Address)
+</div>
+<div>
+    @Html.Label("Birthdate", "Birthdate")
+    @Html.TextBoxFor(m=>m.BirthDate)
+</div>
+<div>
+    <button>submit</button>
+</div>
+

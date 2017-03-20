@@ -33,8 +33,7 @@ namespace CaseOrganizer.Web.Controllers
         [HttpPost]
         public ActionResult SearchContactByLastName(string lastName)
         {
-           
-        
+                 
             return RedirectToAction("ViewContactByLastName", new { lastName = lastName });
         }
         public ActionResult ViewContactByLastName(string lastName)
@@ -42,7 +41,21 @@ namespace CaseOrganizer.Web.Controllers
             List<Contact> contactList = contactDAL.SearchContactsByLastName(lastName);
             return View("ViewContactByLastName", contactList);
         }
+        public ActionResult CreateContact()
+        {
+            return View("CreateContact");
+        }
+        [HttpPost]
+        public ActionResult CreateContact(Contact contact)
+        {
+            bool contactCreated = contactDAL.CreateNewContact(contact);
 
+            return RedirectToAction("CreateContactConfirmation", new { contactCreated = contactCreated } );
+        }
+        public ActionResult CreateContactConfirmation(bool contactCreated)
+        {
+            return View("CreateContactConfirmation", contactCreated);
+        }
    
     }
 }
