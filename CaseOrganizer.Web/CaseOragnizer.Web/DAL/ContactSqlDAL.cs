@@ -139,17 +139,33 @@ namespace CaseOrganizer.Web.DAL
                     {
                         cmd.Parameters.AddWithValue("@phone", newContact.Phone);
                     }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@phone", "");
+                    }
                     if (newContact.Email != null)
                     {
                         cmd.Parameters.AddWithValue("@email", newContact.Email);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@email", "");
                     }
                     if (newContact.Address != null)
                     {
                         cmd.Parameters.AddWithValue("@address", newContact.Address);
                     }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@address", "");
+                    }
                     if(newContact.BirthDate != null)
                     { 
                     cmd.Parameters.AddWithValue("@birthdate", newContact.BirthDate);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@birthdate", "");
                     }
                     int linesChanged = (int)cmd.ExecuteScalar();
                     return (linesChanged > 0);
